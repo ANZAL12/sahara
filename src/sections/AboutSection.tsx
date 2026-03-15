@@ -15,7 +15,7 @@ const aboutImages = [
 
 export default function AboutSection() {
   return (
-    <Section className="bg-[#131517]">
+    <Section className="bg-[#F9F6F0] py-24">
       <Container>
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Text Content */}
@@ -25,16 +25,37 @@ export default function AboutSection() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.06] border border-white/[0.08] text-[#a4a4a4] text-xs font-medium mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#dcd8d0] bg-white/50 text-[#6b8e73] text-xs uppercase tracking-widest font-semibold mb-6 shadow-sm">
               Our Story
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-serif font-medium text-[#2C2C2C] mb-8 tracking-tight leading-[1.1]">
               About{" "}
-              <span className="text-[#00cc68]">Sahara</span>
+              <span className="relative inline-block text-[#6b8e73] italic">
+                Sahara
+                {/* Hand-drawn circle */}
+                <svg
+                  className="absolute -top-3 -left-4 w-[130%] h-[160%] text-[#bb8d62] opacity-50 z-[-1]"
+                  viewBox="0 0 100 50"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  preserveAspectRatio="none"
+                >
+                  <motion.path
+                    d="M50 5 C80 5 95 20 95 30 C95 45 60 48 40 45 C15 40 5 25 10 15 C15 5 40 2 60 8"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    initial={{ pathLength: 0 }}
+                    whileInView={{ pathLength: 1 }}
+                    transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+                    viewport={{ once: true }}
+                  />
+                </svg>
+              </span>
             </h2>
 
-            <div className="space-y-6 text-base text-[#a4a4a4] leading-relaxed">
+            <div className="space-y-6 text-lg text-[#646464] leading-relaxed">
               <p>
                 Sahara Hostel isn&apos;t just a place to stay—it&apos;s where lifelong bonds are forged.
                 From late-night conversations that turn into lifelong friendships, to shared
@@ -56,9 +77,9 @@ export default function AboutSection() {
             </div>
           </motion.div>
 
-          {/* Image Grid */}
+          {/* Image Grid styled like polaroids */}
           <motion.div
-            className="grid grid-cols-2 gap-3"
+            className="grid grid-cols-2 gap-4"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -67,17 +88,17 @@ export default function AboutSection() {
             {aboutImages.map((img, i) => (
               <motion.div
                 key={i}
-                className="relative h-48 rounded-xl overflow-hidden border border-white/[0.08] group"
-                whileHover={{ scale: 1.03 }}
-                transition={{ duration: 0.3 }}
+                className={`relative h-56 rounded-sm bg-white p-2 shadow-md filter sepia-[0.1] ${i % 2 === 0 ? '-rotate-2' : 'rotate-2'} transition-transform duration-300 hover:rotate-0 hover:z-10 hover:shadow-xl`}
               >
-                <Image
-                  src={img}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  alt={`Sahara memory ${i + 1}`}
-                />
-                <div className="absolute inset-0 bg-[#131517]/40 group-hover:bg-[#131517]/20 transition-all duration-500" />
+                <div className="relative w-full h-full overflow-hidden">
+                  <Image
+                    src={img}
+                    fill
+                    className="object-cover"
+                    alt={`Sahara memory ${i + 1}`}
+                  />
+                  <div className="absolute inset-0 bg-[#bb8d62]/10 mix-blend-overlay transition-all duration-500" />
+                </div>
               </motion.div>
             ))}
           </motion.div>

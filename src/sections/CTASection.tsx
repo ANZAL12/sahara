@@ -47,10 +47,12 @@ export default function CTASection() {
   }, []);
 
   return (
-    <Section className="bg-[#131517] relative overflow-hidden">
-      {/* Decorative background blobs */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[radial-gradient(50%_50%_at_50%_50%,#7662fc,transparent)] opacity-10 blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[radial-gradient(50%_50%_at_50%_50%,#01f77e,transparent)] opacity-5 blur-[120px] pointer-events-none" />
+    <Section className="bg-[#4A5D4E] relative overflow-hidden text-[#F9F6F0]">
+      {/* Decorative background paper texture */}
+      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/handmade-paper.png')] opacity-10 pointer-events-none" />
+      
+      {/* Subtle warm glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#bb8d62]/10 blur-[150px] pointer-events-none" />
 
       <Container className="text-center relative z-10">
         <motion.div
@@ -59,30 +61,28 @@ export default function CTASection() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00cc68]/10 border border-[#00cc68]/20 text-[#00cc68] text-sm font-semibold mb-8">
-            <Users className="w-4 h-4" />
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#F9F6F0]/10 border border-[#F9F6F0]/20 text-[#bb8d62] text-xs uppercase tracking-widest font-semibold mb-8">
+            <Users className="w-3.5 h-3.5" />
             Join Our Global Community
           </div>
 
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tight">
-            Ready to{" "}
-            <span className="text-[#00cc68] italic">Reconnect?</span>
+          <h2 className="text-5xl md:text-7xl font-serif font-bold text-[#F9F6F0] mb-8 tracking-tight">
+            Ready to <span className="italic">Reconnect?</span>
           </h2>
 
-          <p className="text-lg text-[#a4a4a4] mb-12 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-[#F9F6F0]/80 mb-12 max-w-2xl mx-auto leading-relaxed font-serif italic">
             Join thousands of Saharians who are already part of this growing community.
             Whether you&apos;re looking to network, share memories, or contribute to our events,
             Sahara Connect is your home away from home.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <Link href="/batches/join">
               <motion.button
-                whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(0, 204, 104, 0.4)" }}
+                whileHover={{ scale: 1.05, boxShadow: "0 10px 40px -10px rgba(0,0,0,0.3)" }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-[#00cc68] hover:bg-[#00ff82] text-[#131517] font-bold px-10 py-5 text-lg rounded-lg flex items-center gap-3 transition-all duration-300"
+                className="bg-[#bb8d62] hover:bg-[#a67c55] text-white font-medium px-12 py-5 text-lg rounded-md transition-all duration-300 shadow-xl"
               >
-                <UserPlus className="w-5 h-5" />
                 Become a Member
               </motion.button>
             </Link>
@@ -91,7 +91,7 @@ export default function CTASection() {
 
         {/* Stats */}
         <motion.div
-          className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-6"
+          className="mt-28 grid grid-cols-1 md:grid-cols-3 gap-8"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
@@ -99,47 +99,38 @@ export default function CTASection() {
         >
           {loading ? (
             <div className="col-span-1 md:col-span-3 flex justify-center py-10">
-              <Loader2 className="w-8 h-8 animate-spin text-[#00cc68]/50" />
+              <Loader2 className="w-8 h-8 animate-spin text-[#bb8d62]/50" />
             </div>
           ) : (
             <>
               <motion.div
-                className="rounded-xl border border-white/[0.08] bg-white/[0.03] p-10 text-center group hover:border-[#00cc68]/20 transition-all duration-500"
-                whileHover={{ y: -4 }}
+                className="p-10 text-center group border border-[#F9F6F0]/10 bg-white/5 backdrop-blur-sm rounded-sm hover:border-[#F9F6F0]/20 transition-all duration-500"
+                whileHover={{ y: -5 }}
               >
-                <div className="w-14 h-14 rounded-xl bg-white/[0.06] flex items-center justify-center mx-auto mb-6 group-hover:bg-[#00cc68]/10 transition-colors duration-500">
-                  <Users className="w-7 h-7 text-[#a4a4a4] group-hover:text-[#00cc68] transition-colors duration-500" />
-                </div>
-                <div className="text-4xl font-bold text-[#00cc68] mb-2">
+                <div className="text-5xl font-serif font-bold text-[#F9F6F0] mb-3 group-hover:text-[#bb8d62] transition-colors duration-500">
                   {stats.members.toLocaleString()}+
                 </div>
-                <div className="text-[#a4a4a4] font-medium uppercase tracking-widest text-xs">Active Members</div>
+                <div className="text-[#F9F6F0]/40 font-serif italic tracking-wider text-sm">Active Members</div>
               </motion.div>
 
               <motion.div
-                className="rounded-xl border border-white/[0.08] bg-white/[0.03] p-10 text-center group hover:border-[#00cc68]/20 transition-all duration-500"
-                whileHover={{ y: -4 }}
+                className="p-10 text-center group border border-[#F9F6F0]/10 bg-white/5 backdrop-blur-sm rounded-sm hover:border-[#F9F6F0]/20 transition-all duration-500"
+                whileHover={{ y: -5 }}
               >
-                <div className="w-14 h-14 rounded-xl bg-white/[0.06] flex items-center justify-center mx-auto mb-6 group-hover:bg-[#00cc68]/10 transition-colors duration-500">
-                  <GraduationCap className="w-7 h-7 text-[#a4a4a4] group-hover:text-[#00cc68] transition-colors duration-500" />
-                </div>
-                <div className="text-4xl font-bold text-[#00cc68] mb-2">
+                <div className="text-5xl font-serif font-bold text-[#F9F6F0] mb-3 group-hover:text-[#bb8d62] transition-colors duration-500">
                   {stats.batches}+
                 </div>
-                <div className="text-[#a4a4a4] font-medium uppercase tracking-widest text-xs">Batches Connected</div>
+                <div className="text-[#F9F6F0]/40 font-serif italic tracking-wider text-sm">Batches Connected</div>
               </motion.div>
 
               <motion.div
-                className="rounded-xl border border-white/[0.08] bg-white/[0.03] p-10 text-center group hover:border-[#00cc68]/20 transition-all duration-500"
-                whileHover={{ y: -4 }}
+                className="p-10 text-center group border border-[#F9F6F0]/10 bg-white/5 backdrop-blur-sm rounded-sm hover:border-[#F9F6F0]/20 transition-all duration-500"
+                whileHover={{ y: -5 }}
               >
-                <div className="w-14 h-14 rounded-xl bg-white/[0.06] flex items-center justify-center mx-auto mb-6 group-hover:bg-[#00cc68]/10 transition-colors duration-500">
-                  <Globe className="w-7 h-7 text-[#a4a4a4] group-hover:text-[#00cc68] transition-colors duration-500" />
-                </div>
-                <div className="text-4xl font-bold text-[#00cc68] mb-2">
+                <div className="text-5xl font-serif font-bold text-[#F9F6F0] mb-3 group-hover:text-[#bb8d62] transition-colors duration-500">
                   {stats.countries}+
                 </div>
-                <div className="text-[#a4a4a4] font-medium uppercase tracking-widest text-xs">Countries Reached</div>
+                <div className="text-[#F9F6F0]/40 font-serif italic tracking-wider text-sm">Countries Reached</div>
               </motion.div>
             </>
           )}

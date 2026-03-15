@@ -57,8 +57,8 @@ export default function FestSection() {
 
   if (loading) {
     return (
-      <Section className="bg-[#131517] min-h-[400px] flex items-center justify-center">
-        <Loader2 className="w-10 h-10 animate-spin text-[#00cc68]" />
+      <Section className="bg-[#F9F6F0] min-h-[400px] flex items-center justify-center">
+        <Loader2 className="w-10 h-10 animate-spin text-[#6b8e73]" />
       </Section>
     );
   }
@@ -70,132 +70,141 @@ export default function FestSection() {
   const currentEvent = events[currentIndex];
 
   return (
-    <Section className="bg-[#0e1012] overflow-hidden relative">
-      {/* Background Decorative Elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 rounded-full blur-[120px] -mr-48 -mt-48 bg-[radial-gradient(50%_50%_at_50%_50%,#7662fc,transparent)] opacity-15 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-[120px] -ml-48 -mb-48 bg-[radial-gradient(50%_50%_at_50%_50%,#01f77e,transparent)] opacity-8 pointer-events-none" />
+    <Section className="bg-[#F9F6F0] overflow-hidden relative py-32 border-b border-[#dcd8d0]">
+      {/* Background Decor */}
+      <div className="absolute top-0 right-0 w-[40%] h-full bg-[#6b8e73]/3 skew-x-[-12deg] translate-x-32 pointer-events-none" />
 
       <Container>
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-20"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00cc68]/10 border border-[#00cc68]/20 text-[#00cc68] text-sm font-semibold mb-6">
-            <Sparkles className="w-4 h-4" />
-            Upcoming Fest Events
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#6b8e73]/20 bg-white shadow-sm text-[#4A5D4E] text-xs uppercase tracking-widest font-semibold mb-6">
+            <Sparkles className="w-4 h-4 text-[#bb8d62]" />
+            Upcoming Celebrations
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-            Experience the <span className="text-[#00cc68]">Spirit</span> of Sahara
+          <h2 className="text-5xl md:text-6xl font-serif font-medium text-[#2C2C2C] mb-6 tracking-tight">
+            Experience the <span className="text-[#6b8e73] italic">Spirit</span> of Sahara
           </h2>
-          <p className="text-lg text-[#a4a4a4] max-w-2xl mx-auto">
-            Join us for a series of unforgettable events celebrating our community&apos;s
-            vibrant culture and enduring connections.
+          <p className="text-xl text-[#646464] max-w-2xl mx-auto font-serif italic">
+            Join us for unforgettable events celebrating our community's vibrant culture.
           </p>
         </motion.div>
 
-        <div className="relative max-w-5xl mx-auto px-4">
+        <div className="relative max-w-6xl mx-auto">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentEvent.id}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.02 }}
+              transition={{ duration: 0.5 }}
+              className="grid lg:grid-cols-12 gap-0 shadow-2xl rounded-sm overflow-hidden bg-white border border-[#ebe6dc]"
             >
-              <div className="grid md:grid-cols-2 gap-0 overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03]">
-                {/* Event Image */}
-                <div className="relative h-[300px] md:h-full min-h-[400px]">
-                  <Image
-                    src={currentEvent.image_url || "/memories/Acer_Wallpaper_03_3840x2400.jpg"}
-                    alt={currentEvent.title}
-                    fill
-                    className="object-cover"
-                    unoptimized
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#131517]/80 via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:to-[#131517]/30" />
-                  <div className="absolute bottom-6 left-6 md:hidden">
-                    <h3 className="text-2xl font-bold text-white">{currentEvent.title}</h3>
-                  </div>
+              {/* Event Postcard Image */}
+              <div className="lg:col-span-7 relative h-[400px] lg:h-[600px] overflow-hidden group">
+                <Image
+                  src={currentEvent.image_url || "/memories/Acer_Wallpaper_03_3840x2400.jpg"}
+                  alt={currentEvent.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  unoptimized
+                />
+                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500" />
+                
+                {/* "Postage Stamp" Overlay */}
+                <div className="absolute top-8 right-8 w-20 h-24 bg-white/90 backdrop-blur-sm border-2 border-dashed border-[#dcd8d0] p-2 flex flex-col items-center justify-center rotate-3 shadow-md">
+                   <div className="w-12 h-12 rounded-full border border-[#bb8d62] flex items-center justify-center opacity-60">
+                      <span className="text-[10px] text-[#bb8d62] font-serif font-bold">SAHARA</span>
+                   </div>
+                   <span className="text-[10px] mt-2 font-serif text-[#a4a4a4]">Est. 1995</span>
                 </div>
+              </div>
 
-                {/* Event Details */}
-                <div className="p-8 md:p-12 flex flex-col justify-center bg-white/[0.02]">
-                  <div className="hidden md:block mb-4">
-                    <h3 className="text-3xl font-bold text-white leading-tight">
-                      {currentEvent.title}
-                    </h3>
-                  </div>
+              {/* Event Details (Invitation Style) */}
+              <div className="lg:col-span-5 p-10 lg:p-16 flex flex-col justify-center relative">
+                {/* Paper Texture Overlay for Card */}
+                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/handmade-paper.png')] opacity-10 pointer-events-none" />
+                
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  <h3 className="text-4xl font-serif font-bold text-[#2C2C2C] mb-8 leading-tight">
+                    {currentEvent.title}
+                  </h3>
 
-                  <p className="text-base text-[#a4a4a4] mb-8 leading-relaxed line-clamp-4">
+                  <p className="text-[#646464] mb-12 font-serif italic text-lg leading-relaxed">
                     {currentEvent.description || "Be part of this amazing celebration and create memories that will last a lifetime."}
                   </p>
 
-                  <div className="space-y-4 mb-10">
-                    <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 rounded-lg bg-white/[0.06] flex items-center justify-center">
-                        <Calendar className="w-5 h-5 text-[#00cc68]" />
+                  <div className="space-y-6 mb-12">
+                    <div className="flex items-center gap-5 group">
+                      <div className="w-12 h-12 rounded-full bg-[#F9F6F0] flex items-center justify-center border border-[#dcd8d0] transition-colors group-hover:border-[#6b8e73]">
+                        <Calendar className="w-5 h-5 text-[#6b8e73]" />
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-xs uppercase tracking-wider font-semibold text-[#a4a4a4]/60">Date</span>
-                        <span className="font-medium text-white">{new Date(currentEvent.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                        <span className="text-xs uppercase tracking-widest font-bold text-[#bb8d62]">When</span>
+                        <span className="text-[#2C2C2C] font-serif font-medium">{new Date(currentEvent.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 rounded-lg bg-white/[0.06] flex items-center justify-center">
-                        <Clock className="w-5 h-5 text-[#00cc68]" />
+                    <div className="flex items-center gap-5 group">
+                      <div className="w-12 h-12 rounded-full bg-[#F9F6F0] flex items-center justify-center border border-[#dcd8d0] transition-colors group-hover:border-[#6b8e73]">
+                        <Clock className="w-5 h-5 text-[#6b8e73]" />
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-xs uppercase tracking-wider font-semibold text-[#a4a4a4]/60">Time</span>
-                        <span className="font-medium text-white">{currentEvent.time || "10:00 AM onwards"}</span>
+                        <span className="text-xs uppercase tracking-widest font-bold text-[#bb8d62]">Time</span>
+                        <span className="text-[#2C2C2C] font-serif font-medium">{currentEvent.time || "10:00 AM onwards"}</span>
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 rounded-lg bg-white/[0.06] flex items-center justify-center">
-                        <MapPin className="w-5 h-5 text-[#00cc68]" />
+                    <div className="flex items-center gap-5 group">
+                      <div className="w-12 h-12 rounded-full bg-[#F9F6F0] flex items-center justify-center border border-[#dcd8d0] transition-colors group-hover:border-[#6b8e73]">
+                        <MapPin className="w-5 h-5 text-[#6b8e73]" />
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-xs uppercase tracking-wider font-semibold text-[#a4a4a4]/60">Venue</span>
-                        <span className="font-medium text-white">{currentEvent.venue || "Sahara Campus Grounds"}</span>
+                        <span className="text-xs uppercase tracking-widest font-bold text-[#bb8d62]">Where</span>
+                        <span className="text-[#2C2C2C] font-serif font-medium">{currentEvent.venue || "Sahara Campus Grounds"}</span>
                       </div>
                     </div>
                   </div>
 
-                  <Link href="/events" className="mt-auto">
+                  <Link href="/events">
                     <motion.button
-                      whileHover={{ scale: 1.02, boxShadow: "0 0 20px rgba(0, 204, 104, 0.3)" }}
+                      whileHover={{ y: -3, scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full md:w-auto bg-[#00cc68] hover:bg-[#00ff82] text-[#131517] font-bold rounded-lg py-4 px-10 text-base transition-all duration-300"
+                      className="w-full bg-[#6b8e73] hover:bg-[#5a7a61] text-white font-medium rounded-sm py-5 px-10 text-lg transition-all duration-300 shadow-lg"
                     >
-                      Explore All Events
+                      Reserve Your Spot
                     </motion.button>
                   </Link>
-                </div>
+                </motion.div>
               </div>
             </motion.div>
           </AnimatePresence>
 
           {/* Carousel Controls */}
           {events.length > 1 && (
-            <div className="flex justify-center md:justify-end gap-4 mt-8">
+            <div className="flex justify-center gap-6 mt-12 pb-10">
               <button
                 onClick={prevEvent}
-                className="rounded-full w-11 h-11 border border-white/[0.1] hover:border-[#00cc68]/50 hover:bg-white/[0.06] text-white/60 hover:text-white flex items-center justify-center transition-all duration-300"
+                className="rounded-full w-14 h-14 border border-[#dcd8d0] hover:border-[#6b8e73] hover:bg-white text-[#646464] hover:text-[#2C2C2C] flex items-center justify-center transition-all duration-300 shadow-sm"
               >
-                <ChevronLeft className="w-5 h-5" />
+                <ChevronLeft className="w-6 h-6" />
               </button>
-              <div className="flex items-center gap-2 px-4 bg-white/[0.04] rounded-full text-sm font-medium text-[#a4a4a4]">
-                <span className="text-[#00cc68] font-bold">{currentIndex + 1}</span> / {events.length}
+              <div className="flex items-center gap-3 px-8 bg-white border border-[#ebe6dc] rounded-full text-lg font-serif italic text-[#646464] shadow-sm">
+                <span className="text-[#6b8e73] font-bold">{currentIndex + 1}</span> / {events.length}
               </div>
               <button
                 onClick={nextEvent}
-                className="rounded-full w-11 h-11 border border-white/[0.1] hover:border-[#00cc68]/50 hover:bg-white/[0.06] text-white/60 hover:text-white flex items-center justify-center transition-all duration-300"
+                className="rounded-full w-14 h-14 border border-[#dcd8d0] hover:border-[#6b8e73] hover:bg-white text-[#646464] hover:text-[#2C2C2C] flex items-center justify-center transition-all duration-300 shadow-sm"
               >
-                <ChevronRight className="w-5 h-5" />
+                <ChevronRight className="w-6 h-6" />
               </button>
             </div>
           )}

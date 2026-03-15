@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Inter } from "next/font/google";
+import { Playfair_Display, Inter, Permanent_Marker, Caveat, Italianno, UnifrakturMaguntia } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "./ClientLayout";
 
-const jakarta = Plus_Jakarta_Sans({
-  variable: "--font-jakarta",
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
 });
 
 const inter = Inter({
@@ -14,9 +15,52 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+const marker = Permanent_Marker({
+  variable: "--font-marker",
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
+const caveat = Caveat({
+  variable: "--font-caveat",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+
+const italianno = Italianno({
+  variable: "--font-roman",
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
+const oldEnglish = UnifrakturMaguntia({
+  variable: "--font-old-english",
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
 export const metadata: Metadata = {
-  title: "Sahara Connect - Reconnect. Remember. Rise Together.",
-  description: "Sahara Connect brings together everyone who once called Sahara home — building lifelong friendships and opportunities.",
+  title: "Sahara Hostel - Your Home Away From Home",
+  description: "Sahara Hostel brings together everyone who once called Sahara home — building lifelong friendships and memories.",
+  keywords: ["Sahara Hostel", "Alumni Network", "College Hostel", "Hostel Life", "Sahara Connect"],
+  authors: [{ name: "Sahara Connect Team" }],
+  openGraph: {
+    title: "Sahara Hostel - Your Home Away From Home",
+    description: "Connect with fellow Sahara Hostel alumni and relive the memories.",
+    url: "https://sahara-connect.vercel.app",
+    siteName: "Sahara Connect",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sahara Hostel - Your Home Away From Home",
+    description: "Relive the memories and connect with Sahara Hostel alumni.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -25,9 +69,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <body
-        className={`${jakarta.variable} ${inter.variable} antialiased`}
+        className={`${playfair.variable} ${inter.variable} ${marker.variable} ${caveat.variable} ${italianno.variable} ${oldEnglish.variable} antialiased bg-[#F9F6F0] text-[#2C2C2C] selection:bg-[#6b8e73]/30`}
       >
         <ClientLayout>
           {children}
