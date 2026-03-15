@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import dynamic from "next/dynamic";
-import Cursor from "@/components/ui/Cursor";
+
 import Footer from "@/components/layout/Footer";
 
 const Ribbons = dynamic(() => import("@/components/ui/Ribbons"), {
@@ -41,7 +41,6 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
                 </main>
                 {!isAdminDashboard && <Footer />}
             </div>
-            <Cursor />
         </>
     );
 }

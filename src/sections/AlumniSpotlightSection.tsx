@@ -75,8 +75,8 @@ export default function AlumniSpotlightSection({ alumni = [] }: { alumni: Alumni
             viewport={{ once: true }}
           >
             <h2 className="text-[#2C2C2C] font-serif font-extrabold text-6xl md:text-7xl leading-[0.9] tracking-tight mb-8">
-              This<br/>
-              is<br/>
+              This<br />
+              is<br />
               <span className="text-[#6b8e73] italic">Us.</span>
             </h2>
             <p className="text-[#646464] text-lg font-serif italic max-w-sm mx-auto lg:mx-0">
@@ -88,22 +88,22 @@ export default function AlumniSpotlightSection({ alumni = [] }: { alumni: Alumni
               <button
                 onClick={() => scrollByAmount(-400)}
                 disabled={!canScrollLeft}
-                className={`p-4 rounded-full border-2 transition-all ${
-                  canScrollLeft
+                suppressHydrationWarning
+                className={`p-4 rounded-full border-2 transition-all ${canScrollLeft
                     ? "border-[#2C2C2C] text-[#2C2C2C] hover:bg-[#2C2C2C] hover:text-[#F9F6F0]"
                     : "border-[#dcd8d0] text-[#dcd8d0] cursor-not-allowed"
-                }`}
+                  }`}
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
               <button
                 onClick={() => scrollByAmount(400)}
                 disabled={!canScrollRight}
-                className={`p-4 rounded-full border-2 transition-all ${
-                  canScrollRight
+                suppressHydrationWarning
+                className={`p-4 rounded-full border-2 transition-all ${canScrollRight
                     ? "border-[#2C2C2C] text-[#2C2C2C] hover:bg-[#2C2C2C] hover:text-[#F9F6F0]"
                     : "border-[#dcd8d0] text-[#dcd8d0] cursor-not-allowed"
-                }`}
+                  }`}
               >
                 <ChevronRight className="w-6 h-6" />
               </button>
@@ -133,26 +133,26 @@ export default function AlumniSpotlightSection({ alumni = [] }: { alumni: Alumni
                 <div className="w-[300px] bg-white p-4 pb-12 rounded-sm shadow-xl border border-[#ebe6dc] relative flex flex-col">
                   {/* Randomly placed masking tape */}
                   <MaskingTape className={`-top-3 ${i % 2 === 0 ? '-left-6 -rotate-12' : 'right-4 rotate-6'}`} />
-                  
+
                   <div className="relative w-full h-[350px] overflow-hidden filter sepia-[0.1] contrast-[1.05]">
                     {profile.image ? (
-                        <Image
+                      <Image
                         src={profile.image}
                         fill
                         className="object-cover"
                         alt={profile.name}
                         sizes="300px"
-                        />
+                      />
                     ) : (
-                        <div className="w-full h-full bg-[#ebe6dc] flex flex-col items-center justify-center text-[#a4a4a4]">
-                            <svg className="w-12 h-12 mb-2 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                            </svg>
-                            <span className="font-serif italic">No Photo</span>
-                        </div>
+                      <div className="w-full h-full bg-[#ebe6dc] flex flex-col items-center justify-center text-[#a4a4a4]">
+                        <svg className="w-12 h-12 mb-2 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                        <span className="font-serif italic">No Photo</span>
+                      </div>
                     )}
                   </div>
-                  
+
                   {/* Handwritten Note underneath */}
                   <div className="absolute bottom-3 left-0 w-full text-center px-4 font-marker">
                     <p className="text-[#2C2C2C] text-xl transform -rotate-2">{profile.name}</p>
@@ -166,23 +166,24 @@ export default function AlumniSpotlightSection({ alumni = [] }: { alumni: Alumni
           {/* Navigation Arrows (Mobile) */}
           <div className="flex lg:hidden justify-center gap-6 mt-4">
             <button
-               onClick={() => scrollByAmount(-300)}
-               className="p-3 bg-[#ebe6dc] rounded-full text-[#4A5D4E]"
+              onClick={() => scrollByAmount(-300)}
+              className="p-3 bg-[#ebe6dc] rounded-full text-[#4A5D4E]"
             >
-               <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className="w-5 h-5" />
             </button>
             <button
-               onClick={() => scrollByAmount(300)}
-               className="p-3 bg-[#ebe6dc] rounded-full text-[#4A5D4E]"
+              onClick={() => scrollByAmount(300)}
+              className="p-3 bg-[#ebe6dc] rounded-full text-[#4A5D4E]"
             >
-               <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-5 h-5" />
             </button>
           </div>
         </div>
       </div>
-      
+
       {/* Custom styles to hide scrollbar cross-browser */}
-      <style dangerouslySetInnerHTML={{__html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         .hide-scrollbar::-webkit-scrollbar {
           display: none;
         }

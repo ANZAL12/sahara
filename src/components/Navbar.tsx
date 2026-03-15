@@ -18,7 +18,7 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      className="fixed top-0 w-full z-50 bg-[#F9F6F0]/80 backdrop-blur-xl border-b border-[#dcd8d0]"
+      className="fixed top-0 w-full z-50 bg-[#F9F6F0]/80 backdrop-blur-xl border-b border-[#dcd8d0] shadow-sm"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
@@ -57,48 +57,57 @@ export default function Navbar() {
           </motion.div>
         </Link>
 
-        {/* Desktop Links */}
-        <div className="hidden md:flex items-center space-x-10">
-          {NAV_LINKS.map((item, index) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="text-[#646464] hover:text-[#2C2C2C] text-sm font-serif italic transition-all duration-300 relative group overflow-hidden"
-            >
-              <motion.span
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="inline-block"
+        {/* Desktop Links & Theme Toggle */}
+        <div className="hidden md:flex items-center space-x-8">
+          <div className="flex items-center space-x-10 mr-4">
+            {NAV_LINKS.map((item, index) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-[#646464] hover:text-[#2C2C2C] text-sm font-serif italic transition-all duration-300 relative group overflow-hidden"
               >
-                {item.name}
-              </motion.span>
-              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#6b8e73] transform translate-x-[-105%] transition-transform duration-300 group-hover:translate-x-0" />
-            </Link>
-          ))}
-          <Link href="/batches/join">
-            <motion.button
+                <motion.span
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="inline-block"
+                >
+                  {item.name}
+                </motion.span>
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#6b8e73] transform translate-x-[-105%] transition-transform duration-300 group-hover:translate-x-0" />
+              </Link>
+            ))}
+          </div>
+
+          <div className="flex items-center space-x-4 border-l border-[#dcd8d0] pl-8">
+            <motion.div
               whileHover={{ y: -2, scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="bg-[#6b8e73] hover:bg-[#5a7a61] text-[#F9F6F0] text-sm font-medium px-6 py-2.5 rounded-sm transition-all duration-300 shadow-sm"
             >
-              Join Us
-            </motion.button>
-          </Link>
+              <Link
+                href="/batches/join"
+                className="inline-block bg-[#6b8e73] hover:bg-[#5a7a61] text-white text-sm font-medium px-6 py-2.5 rounded-sm transition-all duration-300 shadow-sm"
+              >
+                Join Us
+              </Link>
+            </motion.div>
+          </div>
         </div>
 
-        {/* Mobile Hamburger Button */}
-        <button
-          className="md:hidden p-2 rounded-lg hover:bg-[#ebe6dc] transition-colors"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? (
-            <X className="w-6 h-6 text-[#2C2C2C]" />
-          ) : (
-            <Menu className="w-6 h-6 text-[#2C2C2C]" />
-          )}
-        </button>
+        {/* Mobile controls */}
+        <div className="flex items-center space-x-4 md:hidden">
+          <button
+            className="p-2 rounded-lg hover:bg-[#ebe6dc] transition-colors"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? (
+              <X className="w-6 h-6 text-[#2C2C2C]" />
+            ) : (
+              <Menu className="w-6 h-6 text-[#2C2C2C]" />
+            )}
+          </button>
+        </div>
       </Container>
 
       {/* Mobile Dropdown Menu */}
@@ -137,7 +146,7 @@ export default function Navbar() {
                 <Link
                   href="/batches/join"
                   onClick={() => setMobileOpen(false)}
-                  className="block text-center bg-[#6b8e73] hover:bg-[#5a7a61] text-[#F9F6F0] font-medium px-4 py-4 rounded-sm transition-all duration-300"
+                  className="block text-center bg-[#6b8e73] hover:bg-[#5a7a61] text-white font-medium px-4 py-4 rounded-sm transition-all duration-300"
                 >
                   Join Us
                 </Link>

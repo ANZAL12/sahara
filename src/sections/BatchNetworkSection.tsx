@@ -227,15 +227,17 @@ export default function BatchNetworkSection() {
           viewport={{ once: true }}
         >
           <p className="text-[#a4a4a4] mb-6">Can&apos;t find your batch? Help us grow the network!</p>
-          <Link href="/batches/join">
-            <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(0, 204, 104, 0.3)" }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-[#00cc68] hover:bg-[#00ff82] text-[#131517] font-bold px-8 py-3.5 rounded-lg transition-all duration-300"
+          <motion.div
+            whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(0, 204, 104, 0.3)" }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Link
+              href="/batches/join"
+              className="inline-block bg-[#00cc68] hover:bg-[#00ff82] text-[#131517] font-bold px-8 py-3.5 rounded-lg transition-all duration-300"
             >
               Add Your Batch
-            </motion.button>
-          </Link>
+            </Link>
+          </motion.div>
         </motion.div>
       </div>
     </section>

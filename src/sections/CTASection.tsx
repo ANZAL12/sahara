@@ -50,7 +50,7 @@ export default function CTASection() {
     <Section className="bg-[#4A5D4E] relative overflow-hidden text-[#F9F6F0]">
       {/* Decorative background paper texture */}
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/handmade-paper.png')] opacity-10 pointer-events-none" />
-      
+
       {/* Subtle warm glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#bb8d62]/10 blur-[150px] pointer-events-none" />
 
@@ -77,15 +77,17 @@ export default function CTASection() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <Link href="/batches/join">
-              <motion.button
-                whileHover={{ scale: 1.05, boxShadow: "0 10px 40px -10px rgba(0,0,0,0.3)" }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-[#bb8d62] hover:bg-[#a67c55] text-white font-medium px-12 py-5 text-lg rounded-md transition-all duration-300 shadow-xl"
+            <motion.div
+              whileHover={{ scale: 1.05, boxShadow: "0 10px 40px -10px rgba(0,0,0,0.3)" }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Link
+                href="/batches/join"
+                className="inline-block bg-[#bb8d62] hover:bg-[#a67c55] text-white font-medium px-12 py-5 text-lg rounded-md transition-all duration-300 shadow-xl"
               >
                 Become a Member
-              </motion.button>
-            </Link>
+              </Link>
+            </motion.div>
           </div>
         </motion.div>
 

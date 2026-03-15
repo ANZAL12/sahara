@@ -114,13 +114,13 @@ export default function FestSection() {
                   unoptimized
                 />
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500" />
-                
+
                 {/* "Postage Stamp" Overlay */}
                 <div className="absolute top-8 right-8 w-20 h-24 bg-white/90 backdrop-blur-sm border-2 border-dashed border-[#dcd8d0] p-2 flex flex-col items-center justify-center rotate-3 shadow-md">
-                   <div className="w-12 h-12 rounded-full border border-[#bb8d62] flex items-center justify-center opacity-60">
-                      <span className="text-[10px] text-[#bb8d62] font-serif font-bold">SAHARA</span>
-                   </div>
-                   <span className="text-[10px] mt-2 font-serif text-[#a4a4a4]">Est. 1995</span>
+                  <div className="w-12 h-12 rounded-full border border-[#bb8d62] flex items-center justify-center opacity-60">
+                    <span className="text-[10px] text-[#bb8d62] font-serif font-bold">SAHARA</span>
+                  </div>
+                  <span className="text-[10px] mt-2 font-serif text-[#a4a4a4]">Est. 1995</span>
                 </div>
               </div>
 
@@ -128,7 +128,7 @@ export default function FestSection() {
               <div className="lg:col-span-5 p-10 lg:p-16 flex flex-col justify-center relative">
                 {/* Paper Texture Overlay for Card */}
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/handmade-paper.png')] opacity-10 pointer-events-none" />
-                
+
                 <motion.div
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -174,15 +174,17 @@ export default function FestSection() {
                     </div>
                   </div>
 
-                  <Link href="/events">
-                    <motion.button
-                      whileHover={{ y: -3, scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="w-full bg-[#6b8e73] hover:bg-[#5a7a61] text-white font-medium rounded-sm py-5 px-10 text-lg transition-all duration-300 shadow-lg"
+                  <motion.div
+                    whileHover={{ y: -3, scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <Link
+                      href="/events"
+                      className="inline-block w-full text-center bg-[#6b8e73] hover:bg-[#5a7a61] text-white font-medium rounded-sm py-5 px-10 text-lg transition-all duration-300 shadow-lg"
                     >
                       Reserve Your Spot
-                    </motion.button>
-                  </Link>
+                    </Link>
+                  </motion.div>
                 </motion.div>
               </div>
             </motion.div>

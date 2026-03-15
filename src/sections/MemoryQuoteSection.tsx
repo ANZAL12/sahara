@@ -13,7 +13,7 @@ export default function MemoryQuoteSection() {
       <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#6b8e73]/5 rounded-full blur-[120px] pointer-events-none" />
       
       {/* Subtle background image */}
-      <div className="absolute inset-0 bg-[url('/memories/Acer_Wallpaper_05_3840x2400.jpg')] bg-cover bg-center opacity-[0.02]"></div>
+      <div className="absolute inset-0 bg-[url('/memories/Acer_Wallpaper_05_3840x2400.jpg')] bg-cover bg-center opacity-[0.02] grayscale"></div>
 
       <Container className="text-center relative z-10">
         <motion.div
@@ -24,20 +24,22 @@ export default function MemoryQuoteSection() {
           className="relative inline-block w-full max-w-screen-xl"
         >
           {/* Old English, single-line, tight tracking, and scribble typing effect */}
-          <div className="flex flex-nowrap justify-center items-baseline gap-x-2 md:gap-x-4 select-none">
-            {"VENI VEDI VICI".split("").map((char, i) => (
+          <div className="flex flex-nowrap justify-center items-baseline gap-x-1 md:gap-x-3 select-none py-10">
+            {'"Vini Vidi Vici"'.split("").map((char, i) => (
               <motion.span
                 key={i}
-                initial={{ opacity: 0, scale: 0.5, filter: "blur(4px)" }}
+                initial={{ opacity: 0, scale: 0.5, filter: "blur(8px)" }}
                 whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                 transition={{ 
                   duration: 0.1, 
-                  delay: 0.5 + i * 0.1,
+                  delay: 0.2 + i * 0.08,
                   type: "spring",
-                  stiffness: 200
+                  stiffness: 250,
+                  damping: 15
                 }}
                 viewport={{ once: true }}
-                className="text-4xl md:text-7xl lg:text-9xl font-old-english text-[#2C2C2C] tracking-tighter antialiased flex-shrink-0"
+                style={{ fontFamily: '"Old English Text MT", serif' }}
+                className="text-6xl sm:text-7xl md:text-8xl lg:text-[11rem] leading-none text-[#2C2C2C] drop-shadow-xl font-bold tracking-tighter antialiased flex-shrink-0 hover:text-[#bb8d62] transition-colors duration-500"
               >
                 {char === " " ? "\u00A0\u00A0" : char}
               </motion.span>
@@ -86,7 +88,7 @@ export default function MemoryQuoteSection() {
             transition={{ duration: 1, delay: 3.5 }}
             viewport={{ once: true }}
           >
-            I came, I saw, I conquered. Together.
+            We came, We saw, We conquered Together
           </motion.p>
         </motion.div>
       </Container>
