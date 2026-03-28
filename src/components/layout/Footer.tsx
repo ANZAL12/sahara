@@ -120,7 +120,7 @@ export default function Footer() {
           <div className="flex items-center gap-3 text-[#F9F6F0]/60 text-sm italic font-serif group">
             <span>Built with</span>
             <Heart className="w-4 h-4 text-[#bb8d62] fill-[#bb8d62] group-hover:scale-125 transition-transform" />
-            <span>by the Sahara Alumni Community</span>
+            <span>by Sahara Community</span>
           </div>
         </div>
       </Container>
