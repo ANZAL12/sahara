@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Container } from "./Container";
-import { Mail, Phone, Instagram, Facebook, Heart } from "lucide-react";
+import { Mail, Instagram, Facebook, Heart } from "lucide-react";
 
 // WhatsApp icon (not in lucide-react)
 const WhatsApp = ({ className = "" }: { className?: string }) => (
@@ -36,7 +36,7 @@ const FOOTER_LINKS = [
 const SOCIAL_LINKS = [
   { icon: Instagram, href: "https://www.instagram.com/sahara_hostel_cusat/", name: "Instagram" },
   { icon: Facebook, href: "https://www.facebook.com/sahara.hostel/", name: "Facebook" },
-  { icon: WhatsApp, href: "https://chat.whatsapp.com/GQJXKrnxx4x77oYMtQr2UY", name: "WhatsApp" },
+  { icon: WhatsApp, href: "https://wa.me/917306801631", name: "WhatsApp" },
 ];
 
 export default function Footer() {

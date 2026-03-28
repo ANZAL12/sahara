@@ -46,9 +46,13 @@ export default function AlumniSpotlightSection({ alumni = [] }: { alumni: Alumni
 
   useEffect(() => {
     checkScroll();
+    const timer = setTimeout(checkScroll, 100); // Wait for DOM layout to settle 
     window.addEventListener("resize", checkScroll);
-    return () => window.removeEventListener("resize", checkScroll);
-  }, []);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", checkScroll);
+    };
+  }, [alumni]);
 
   const scrollByAmount = (amount: number) => {
     if (scrollRef.current) {

@@ -26,7 +26,7 @@ export default function Home() {
         const { data, error } = await supabase
           .from('batch_members')
           .select('name, job_title, profile_image_url, batch')
-          .limit(10); // Fetch up to 10 for the spotlight
+          .limit(50); // Fetch up to 50 for shuffling
 
         if (error) throw error;
 
@@ -34,10 +34,13 @@ export default function Home() {
           const formatted = data.map(m => ({
             name: m.name,
             role: m.job_title || "Member",
-            image: m.profile_image_url || "/memories/Acer_Wallpaper_01_3840x2400.jpg", // Fallback image
+            image: m.profile_image_url || "", // Let component handle fallback
             batch: m.batch
           }));
-          setAlumni(formatted);
+          
+          // Shuffle and pick 10
+          const shuffled = formatted.sort(() => 0.5 - Math.random()).slice(0, 10);
+          setAlumni(shuffled);
         }
       } catch (err) {
         console.error("Error fetching spotlight alumni:", err);
