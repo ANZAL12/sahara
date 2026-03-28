@@ -12,8 +12,6 @@ import {
   Clock,
   ArrowLeft,
   Loader2,
-  CalendarDays,
-  Share2,
   ClipboardList
 } from "lucide-react";
 import Link from "next/link";
@@ -66,57 +64,6 @@ export default function EventDetailsClient() {
     }
   }
 
-  const handleShare = async () => {
-    if (!event) return;
-
-    // We include the image URL in the share text for devices that don't support file sharing
-    // but the OG tags (Open Graph) handled in Page.tsx will provide the rich preview on most platforms.
-    const shareData: ShareData = {
-      title: event.title,
-      text: `${event.tagline || event.description}\n\nCheck it out here:`,
-      url: window.location.href,
-    };
-
-    try {
-      if (navigator.share) {
-        await navigator.share(shareData);
-      } else {
-        await navigator.clipboard.writeText(window.location.href);
-        alert("Event link copied to clipboard!");
-      }
-    } catch (err) {
-      // Don't show error if user cancelled
-      if ((err as Error).name !== 'AbortError') {
-        console.error("Error sharing:", err);
-      }
-    }
-  };
-
-  const handleAddToCalendar = () => {
-    if (!event) return;
-
-    const title = encodeURIComponent(event.title);
-    const details = encodeURIComponent(event.description || "");
-    const location = encodeURIComponent(event.venue || "");
-    
-    const dateStr = event.date.replace(/-/g, '');
-    let startTime = "090000"; 
-    let endTime = "100000";   
-    
-    if (event.time) {
-        const [hours, minutes] = event.time.split(':');
-        if (hours && minutes) {
-            startTime = `${hours}${minutes}00`;
-            const endHours = String(Number(hours) + 1).padStart(2, '0');
-            endTime = `${endHours}${minutes}00`;
-        }
-    }
-
-    const dates = `${dateStr}T${startTime}Z/${dateStr}T${endTime}Z`;
-    const googleUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=${dates}`;
-    
-    window.open(googleUrl, '_blank');
-  };
 
   if (loading) {
     return (
@@ -237,24 +184,7 @@ export default function EventDetailsClient() {
                       </div>
                     </div>
 
-                    <div className="pt-4 flex flex-wrap items-center gap-4">
-                      <Button 
-                        variant="outline" 
-                        size="sm" 
-                        className="rounded-full gap-2 border-border hover:bg-muted text-xs font-semibold px-4"
-                        onClick={handleShare}
-                      >
-                        <Share2 className="w-3.5 h-3.5" /> Share Event
-                      </Button>
-                      <Button 
-                        variant="outline" 
-                        size="sm" 
-                        className="rounded-full gap-2 border-border hover:bg-muted text-xs font-semibold px-4"
-                        onClick={handleAddToCalendar}
-                      >
-                        <CalendarDays className="w-3.5 h-3.5" /> Add to Calendar
-                      </Button>
-                    </div>
+
                   </div>
                 </div>
 
