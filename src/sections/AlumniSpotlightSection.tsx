@@ -34,8 +34,7 @@ export default function AlumniSpotlightSection({ alumni = [] }: { alumni: Alumni
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
-  // Extend data for a richer carousel if array is small
-  const displayAlumni = alumni.length > 5 ? alumni : [...alumni, ...alumni, ...alumni].slice(0, 10);
+  const displayAlumni = alumni;
 
   const checkScroll = () => {
     if (scrollRef.current) {

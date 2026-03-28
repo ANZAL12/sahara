@@ -50,7 +50,7 @@ export default function Footer() {
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/handmade-paper.png')] opacity-10 pointer-events-none" />
 
       <Container className="relative z-10">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-16 mb-24">
           {/* Brand Column */}
           <div className="space-y-8">
             <Link href="/" className="inline-block group">
@@ -72,12 +72,6 @@ export default function Footer() {
                   <Mail className="w-4 h-4" />
                 </div>
                 <span className="text-sm font-serif italic">saharaconnect26@gmail.com</span>
-              </div>
-              <div className="flex items-center gap-3 text-[#F9F6F0]/60 hover:text-[#bb8d62] transition-colors cursor-pointer group">
-                <div className="w-10 h-10 rounded-full border border-[#F9F6F0]/10 flex items-center justify-center group-hover:border-[#bb8d62]/30">
-                  <Phone className="w-4 h-4" />
-                </div>
-                <span className="text-sm font-serif italic">+91 98765 43210</span>
               </div>
             </div>
             <div className="flex gap-5">
@@ -116,39 +110,6 @@ export default function Footer() {
               </ul>
             </div>
           ))}
-
-          {/* Contact Column - Signature Ledger Style */}
-          <div className="space-y-6 bg-[#F9F6F0]/5 backdrop-blur-md p-8 rounded-sm border border-[#F9F6F0]/10 shadow-lg relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-16 h-16 bg-[url('https://www.transparenttextures.com/patterns/handmade-paper.png')] opacity-20 mix-blend-overlay pointer-events-none" />
-            <h3 className="text-[#bb8d62] font-bold uppercase tracking-[0.2em] text-sm flex items-center gap-2">
-              Sign the Ledger
-              <svg className="w-4 h-4 text-[#bb8d62] opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" /></svg>
-            </h3>
-            <p className="text-[#F9F6F0]/70 text-sm font-serif italic mb-4">
-              Leave your mark. Join our inner circle for exclusive alumni updates and early invites.
-            </p>
-            <form className="mt-4 relative" onSubmit={(e) => e.preventDefault()} suppressHydrationWarning>
-              <input
-                type="email"
-                placeholder="Your preferred email address..."
-                className="w-full bg-transparent border-0 border-b-2 border-[#bb8d62]/50 text-[#F9F6F0] font-caveat text-xl py-2 px-1 focus:ring-0 focus:outline-none focus:border-[#bb8d62] transition-colors placeholder:font-serif placeholder:italic placeholder:text-sm placeholder:text-[#F9F6F0]/30"
-                required
-                suppressHydrationWarning
-              />
-              <motion.button
-                whileHover={{ scale: 1.05, color: "#bb8d62" }}
-                whileTap={{ scale: 0.95 }}
-                type="submit"
-                className="absolute right-0 bottom-2 text-[#F9F6F0]/70 hover:text-[#bb8d62] transition-colors"
-                aria-label="Submit signature"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m22 2-7 20-4-9-9-4Z" /><path d="M22 2 11 13" /></svg>
-              </motion.button>
-            </form>
-            <div className="absolute -bottom-6 -right-6 text-[8rem] font-old-english text-[#F9F6F0]/5 opacity-10 pointer-events-none rotate-12">
-              S
-            </div>
-          </div>
         </div>
 
         {/* Bottom Bar */}
@@ -159,7 +120,7 @@ export default function Footer() {
           <div className="flex items-center gap-3 text-[#F9F6F0]/60 text-sm italic font-serif group">
             <span>Built with</span>
             <Heart className="w-4 h-4 text-[#bb8d62] fill-[#bb8d62] group-hover:scale-125 transition-transform" />
-            <span>by the Sahara Alumni Community</span>
+            <span>by Sahara Community</span>
           </div>
         </div>
       </Container>

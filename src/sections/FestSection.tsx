@@ -173,18 +173,6 @@ export default function FestSection() {
                       </div>
                     </div>
                   </div>
-
-                  <motion.div
-                    whileHover={{ y: -3, scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <Link
-                      href="/events"
-                      className="inline-block w-full text-center bg-[#6b8e73] hover:bg-[#5a7a61] text-white font-medium rounded-sm py-5 px-10 text-lg transition-all duration-300 shadow-lg"
-                    >
-                      Reserve Your Spot
-                    </Link>
-                  </motion.div>
                 </motion.div>
               </div>
             </motion.div>
